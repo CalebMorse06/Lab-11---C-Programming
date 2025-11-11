@@ -18,10 +18,15 @@
 #include <string>
 #include <fstream>
 
-int main() {
+int main(int argc, char** argv) {
     std::string filename;
-    std::cout << "Enter the filename: ";
-    std::cin >> filename;
+    // Allow the TA to pass the filename as a command-line argument for easy testing.
+    if (argc > 1) {
+        filename = argv[1];
+    } else {
+        std::cout << "Enter the filename: ";
+        std::cin >> filename;
+    }
     
     // Read size from file first
     std::ifstream file(filename);
@@ -65,34 +70,34 @@ int main() {
     std::cout << "Sum of secondary diagonal elements of Matrix 1: " 
               << matrix1.sumSecondaryDiagonal() << std::endl;
     
-    // Practice 5: Swap rows (default: rows 0 and 1)
+    // Practice 5: Swap rows (pass-by-value wrappers; default: rows 0 and 1)
     std::cout << "\nMatrix 1 with rows 0 and 1 swapped:" << std::endl;
-    Matrix swappedRows = matrix1.swapRows();
+    Matrix swappedRows = swapRows(matrix1);
     swappedRows.display();
-    
+
     // Also demonstrate with custom indices
     std::cout << "\nMatrix 1 with rows 1 and 2 swapped:" << std::endl;
-    Matrix swappedRowsCustom = matrix1.swapRows(1, 2);
+    Matrix swappedRowsCustom = swapRows(matrix1, 1, 2);
     swappedRowsCustom.display();
     
     // Practice 6: Swap columns (default: columns 0 and 1)
     std::cout << "\nMatrix 1 with columns 0 and 1 swapped:" << std::endl;
-    Matrix swappedCols = matrix1.swapColumns();
+    Matrix swappedCols = swapColumns(matrix1);
     swappedCols.display();
-    
+
     // Also demonstrate with custom indices
     std::cout << "\nMatrix 1 with columns 2 and 3 swapped:" << std::endl;
-    Matrix swappedColsCustom = matrix1.swapColumns(2, 3);
+    Matrix swappedColsCustom = swapColumns(matrix1, 2, 3);
     swappedColsCustom.display();
     
     // Practice 7: Update element (default: row=0, col=0, value=100)
     std::cout << "\nMatrix 1 with element at (0,0) updated to 100:" << std::endl;
-    Matrix updated1 = matrix1.updateElement();
+    Matrix updated1 = updateElement(matrix1);
     updated1.display();
-    
+
     // Also demonstrate with custom values
     std::cout << "\nMatrix 1 with element at (2,2) updated to 999:" << std::endl;
-    Matrix updated2 = matrix1.updateElement(2, 2, 999);
+    Matrix updated2 = updateElement(matrix1, 2, 2, 999);
     updated2.display();
     
     // Verify original matrix is not modified

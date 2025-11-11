@@ -201,3 +201,16 @@ Matrix Matrix::updateElement(int row, int col, int value) const {
     return result;
 }
 
+// Non-member pass-by-value wrapper functions (meet the lab requirement of passing Matrix by value)
+Matrix swapRows(Matrix m, int row1, int row2) {
+    return m.swapRows(row1, row2);
+}
+
+Matrix swapColumns(Matrix m, int col1, int col2) {
+    return m.swapColumns(col1, col2);
+}
+
+Matrix updateElement(Matrix m, int row, int col, int value) {
+    return m.updateElement(row, col, value);
+}
+

@@ -9,8 +9,8 @@
 
 class Matrix {
 private:
-    std::vector<std::vector<int>> data;
     int size;
+    std::vector<std::vector<int>> data;
 
 public:
     // Constructor
@@ -59,5 +59,11 @@ public:
     Matrix updateElement(int row = 0, int col = 0, int value = 100) const;
 };
 
+// Non-member functions that take Matrix by value (ensures original is not modified)
+Matrix swapRows(Matrix m, int row1 = 0, int row2 = 1);
+Matrix swapColumns(Matrix m, int col1 = 0, int col2 = 1);
+Matrix updateElement(Matrix m, int row = 0, int col = 0, int value = 100);
+
 #endif // MATRIX_H
+
 
